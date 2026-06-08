@@ -276,7 +276,7 @@ function CameraScanner({ onDetected, onClose }) {
 
   const startCamera = async (envFacing=true) => {
     stopAll(); detectedRef.current=false; setPhase("starting"); setErrorType("");
-    if (location.protocol!=="https:"&&location.hostname!=="localhost") { setErrorType("insecure"); setPhase("error"); return; }
+    if (window.location.protocol!=="https:"&&window.location.hostname!=="localhost") { setErrorType("insecure"); setPhase("error"); return; }
     const constraints = { video:{ facingMode: envFacing?{ideal:"environment"}:{ideal:"user"}, width:{ideal:1280}, height:{ideal:720} } };
     let stream;
     try { stream = await navigator.mediaDevices.getUserMedia(constraints); }
